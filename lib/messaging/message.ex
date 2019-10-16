@@ -49,11 +49,8 @@ defmodule FirebaseAdminEx.Messaging.Message do
 	end
 	
 	def validate(%Message{} = message) do
-		android_message_config = Map.get(attributes, :android)
-		apns_message_config = Map.get(attributes, :apns)
-		web_message_config = Map.get(attributes, :webpush)
-		token = Map.get(attributes, :token)
-		topic = Map.get(attributes, :topic)
+		token = Map.get(message, :token)
+		topic = Map.get(message, :topic)
 		
 		if((is_nil(token) or token == "") and (is_nil(topic) or topic == "")) do
 			{:error, "[Message] token or topic is missing"}
