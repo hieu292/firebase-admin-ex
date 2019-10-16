@@ -8,7 +8,7 @@ defmodule FirebaseAdminEx.Messaging.AndroidMessage.Config do
 
   @keys [
     collapse_key: "",
-    priority: "normal",
+    priority: "high",
     ttl: "",
     restricted_package_name: "",
     data: %{},
@@ -34,7 +34,7 @@ defmodule FirebaseAdminEx.Messaging.AndroidMessage.Config do
   def new(attributes \\ %{}) do
     %__MODULE__{
       collapse_key: Map.get(attributes, :collapse_key),
-      priority: Map.get(attributes, :priority),
+      priority: Map.get(attributes, :priority, "high"),
       ttl: Map.get(attributes, :ttl),
       restricted_package_name: Map.get(attributes, :restricted_package_name),
       data: Map.get(attributes, :data, %{}),

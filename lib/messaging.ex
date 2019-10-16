@@ -8,6 +8,19 @@ defmodule FirebaseAdminEx.Messaging do
   # Public API
 
   @doc """
+  The send/1 function makes an API call to the
+  firebase messaging `send` endpoint with the auth token
+  and message attributes.
+  """
+  @spec send(struct()) :: tuple()
+  def send(message) do
+    {:ok, project_id} = Goth.Config.get(:project_id)
+    {:ok, token} = Goth.Token.for_scope(@messaging_scope)
+
+    send(project_id, token.token, message)
+  end
+  
+  @doc """
   The send/2 function makes an API call to the
   firebase messaging `send` endpoint with the auth token
   and message attributes.
