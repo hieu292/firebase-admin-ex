@@ -40,9 +40,9 @@ defmodule FirebaseAdminEx.Messaging.APNSMessage.Aps do
 		}
 	end
 	
-	def validate(%__MODULE__{alert_string: nil, alert: nil} = message), do: {:ok, message}
+	def validate(%__MODULE__{alert: nil} = message), do: {:ok, message}
 	
-	def validate(%__MODULE__{alert_string: nil, alert: alert} = message_config) do
+	def validate(%__MODULE__{alert: alert} = message_config) do
 		case Alert.validate(alert) do
 			{:ok, _} ->
 				{:ok, message_config}
@@ -51,11 +51,6 @@ defmodule FirebaseAdminEx.Messaging.APNSMessage.Aps do
 				{:error, error_message}
 		end
 	end
-	
-	def validate(%__MODULE__{alert_string: _, alert: nil} = message), do: {:ok, message}
-	
-	def validate(%__MODULE__{alert_string: _, alert: _}),
-		do: {:error, "[APNSMessage.Aps] Multiple alert specifications"}
 	
 	def validate(_), do: {:error, "[APNSMessage.Aps] Invalid payload"}
 end
