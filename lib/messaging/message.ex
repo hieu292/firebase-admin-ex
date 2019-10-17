@@ -73,9 +73,9 @@ defmodule FirebaseAdminEx.Messaging.Message do
 		config = Map.get(message, type)
 		cond do
 			is_nil(config) -> {:ok, message}
-			not is_nil(config) and type == :android -> AndroidMessageConfig.validate(message)
-			not is_nil(config) and type == :webpush -> WebMessageConfig.validate(message)
-			not is_nil(config) and type == :apns -> APNSMessageConfig.validate(message)
+			not is_nil(config) and type == :android -> AndroidMessageConfig.validate(config)
+			not is_nil(config) and type == :webpush -> WebMessageConfig.validate(config)
+			not is_nil(config) and type == :apns -> APNSMessageConfig.validate(config)
 			true -> {:error, "[Message] token or topic is missing"}
 		end
 	end
