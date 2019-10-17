@@ -38,7 +38,7 @@ defmodule FirebaseAdminEx.Messaging.AndroidMessage.Config do
       ttl: Map.get(attributes, :ttl),
       restricted_package_name: Map.get(attributes, :restricted_package_name),
       data: Map.get(attributes, :data, %{}),
-      notification: Notification.new(attributes)
+      notification: Notification.new(Map.get(attributes, :notification))
     }
   end
 
