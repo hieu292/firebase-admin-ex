@@ -55,5 +55,7 @@ defmodule FirebaseAdminEx.Messaging.AndroidMessage.Config do
     end
   end
 
-  def validate(_), do: {:error, "[AndroidMessage.Config] Invalid payload"}
+  def validate(data), do:
+	  IO.inspect([data_android: data])
+	  {:error, "[AndroidMessage.Config] Invalid payload"}
 end
