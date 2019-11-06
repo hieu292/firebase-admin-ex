@@ -50,8 +50,7 @@ defmodule FirebaseAdminEx.Messaging do
          {:ok, body} <- Response.parse(response) do
       {:ok, body}
     else
-      {:error, error} ->
-        raise Errors.ApiError, Kernel.inspect(error)
+      {:error, error} -> {:error, error}
     end
   end
 
