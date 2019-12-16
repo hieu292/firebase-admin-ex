@@ -31,7 +31,7 @@ defmodule FirebaseAdminEx.Messaging.APNSMessage.Aps do
 	
 	def new(attributes \\ %{}) do
 		%__MODULE__{
-			"thread-id": Map.get(attributes, :"thread-id"),
+			"thread-id": Map.get(attributes, :"thread-id", ""),
 			alert: Alert.new(Map.get(attributes, :alert)),
 			badge: Map.get(attributes, :badge, 0),
 			sound: Map.get(attributes, :sound, "default"),
